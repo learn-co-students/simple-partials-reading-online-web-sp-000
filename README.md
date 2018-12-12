@@ -16,7 +16,8 @@ We can apply a similar tool to reduce repetition in HTML. Partials are view-leve
 Let's look at an example to see what this means.
 
 ## Example
-
+# comment
+# comment2
 Before we get started, make sure that you run `rake db:seed` to seed the database. This will give us some posts and authors. Because we want to focus on partials, you'll notice some hard-coding in the controller. In the `posts#create` action, we've hard-coded that every new post created is linked to the very first author in the database.
 
 OK, let's dive in!
