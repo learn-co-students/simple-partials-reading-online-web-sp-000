@@ -13,7 +13,7 @@ As you know, while coding we are generally trying to not repeat our code. If we 
 
 We can apply a similar tool to reduce repetition in HTML. Partials are view-level files that only form one part of an HTML page. By using a partial, we can remove repeated pieces of HTML and add better organization to the code in our views.
 
-Let's look at an example to see what this means.
+Let's look at a example to see what this means.
 
 ## Example
 
