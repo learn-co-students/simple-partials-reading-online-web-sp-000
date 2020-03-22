@@ -21,7 +21,7 @@ Before we get started, make sure that you run `rake db:seed` to seed the databas
 
 OK, let's dive in!
 
-This is the code in the `posts#new` form:
+This is the code in the `posts#new` f#orm:
 ```erb
 <!-- app/views/posts/new.html.erb -->
 
