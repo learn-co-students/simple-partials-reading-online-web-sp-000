@@ -21,6 +21,11 @@ class PostsController < ApplicationController
     redirect_to post_path(@post)
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @author = @post.author
+  end
+
   def edit
     @post = Post.find(params[:id])
   end
