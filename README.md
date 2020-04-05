@@ -22,6 +22,7 @@ Before we get started, make sure that you run `rake db:seed` to seed the databas
 OK, let's dive in!
 
 This is the code in the `posts#new` form:
+
 ```erb
 <!-- app/views/posts/new.html.erb -->
 
@@ -35,7 +36,9 @@ This is the code in the `posts#new` form:
   <%= submit_tag "Submit Post" %>
 <% end %>
 ```
+
 And this is the code in the `posts#edit` form:
+
 ```erb
 <!-- app/views/posts/edit.html.erb -->
 
@@ -66,17 +69,20 @@ Second, let's remove the repeated code in `app/views/posts/edit.html.erb`. The f
 <%= form_tag post_path(@post), method: "put" do %>
 <% end %>
 ```
+
 Note that we left in the non-duplicated code. Now, let's also remove the duplicated code in the `app/views/posts/new.html.erb` file. The file should look like this:
 
 ```erb
 <%= form_tag posts_path do %>
 <% end %>
 ```
+
 We left the code that is unique to each view and removed the duplicated code inside the `form_tag` blocks.
 
 So, now what? It looks like we are missing a bunch of code in our `posts/new` and `posts/edit` files. Not to worry –– that's where our partial comes in handy.
 
 First, we'll place the duplicated code in a new file called `app/views/posts/_form.html.erb`. The file should look as follows:
+
 ```erb
 <label>Post title:</label><br>
 <%= text_field_tag :title, @post.title %><br>
@@ -86,9 +92,11 @@ First, we'll place the duplicated code in a new file called `app/views/posts/_fo
 
 <%= submit_tag "Submit Post" %>
 ```
+
 Next, we need to render the code into the `posts/edit` and `posts/new` pages by placing `<%= render "form" %>` where we want the code in the partial to be rendered. Notice that, while the file name of our partial starts with an underscore, when we reference it there is no underscore.
 
 Our `posts/new` file should now look like this:
+
 ```erb
 <!-- app/views/posts/new.html.erb -->
 
@@ -98,6 +106,7 @@ Our `posts/new` file should now look like this:
 ```
 
 And our `posts/edit` file like this:
+
 ```erb
 <!-- app/views/posts/edit.html.erb -->
 
@@ -111,6 +120,7 @@ And our `posts/edit` file like this:
 And that's it –– we're all done!
 
 A couple of things to note:
+
 1. Notice that, even though the last line of the form (the `<% end %>` tag) is duplicated code, we didn't move it into the partial. This is because it closes the beginning of the `form_tag` block, which DOES differ from form to form. We don't want to open our `form_tag` block in one file and close it in a different file. This is a stylistic point that you will get a feel for over time.
 
 2. We could have named the partial whatever we wanted to. The only requirements are that it start with an underscore and that references to the partial are made without the underscore. But, just like method names, it's good to make the names of our partials as commonsensical as possible.
