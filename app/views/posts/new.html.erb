@@ -3,6 +3,7 @@
   <%= text_field_tag :title, @post.title %><br>
 
   <label>Post Description</label><br>
-  <%= text_area_tag :description, @post.description %><br>
+  <%= text_area_tag :description, @post.description %>
+  <br>
   <%= submit_tag "Submit Post" %>
 <% end %>
