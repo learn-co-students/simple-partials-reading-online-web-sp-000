@@ -5,6 +5,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+     @author = @post.author
+     #here we have to render author instance to have it show up in our partial _author for the post views
   end
 
   def new
@@ -16,7 +18,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @post.title = params[:title]
     @post.description = params[:description]
-    @post.author_id = @author.id
+    @post.author_id = @author.id #here every post created is linked to the author
     @post.save
     redirect_to post_path(@post)
   end
@@ -30,5 +32,5 @@ class PostsController < ApplicationController
     @post.update(title: params[:title], description: params[:description])
     redirect_to post_path(@post)
   end
-  
+
 end
